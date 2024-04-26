@@ -5,7 +5,8 @@ conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
 
 # Execute a instrução SQL para excluir todas as linhas da tabela
-c.execute('DELETE FROM fabricaNeeds_entradasestoque')
+#c.execute('DELETE FROM fabricaNeeds_entradasestoque')
+c.execute(input("Qual comando SQL? "))
 
 # Confirme as alterações
 conn.commit()
