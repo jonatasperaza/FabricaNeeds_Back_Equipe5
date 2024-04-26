@@ -1,16 +1,13 @@
 from pathlib import Path
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+SECRET_KEY='django-insecure-*v-phx*4a3z1$zb63stqr!*9!s@7sodevwirup7*nqtpb$g96t'
+DEBUG=True
+ALLOWED_HOSTS=['*']
+
+MODE='DEVELOPMENT' # DEVELOPMENT, PRODUCTION, MIGRATE
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-MODE = os.getenv("MODE")
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-
-DEBUG = os.getenv("DEBUG", "False")
 
 
 INSTALLED_APPS = [
@@ -23,6 +20,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "fabricaNeeds",
+    
 ]
 
 MIDDLEWARE = [
@@ -37,6 +35,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+#REST_FRAMEWORK = {
+#    "DEFAULT_PERMISSION_CLASSES": [
+#        "rest_framework.permissions.IsAuthenticated",
+#        "rest_framework.permissions.DjangoModelPermissions",
+#    ],
+#}
 
 TEMPLATES = [
     {
@@ -93,6 +98,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Django's default auth backend
+]
+
 
 LANGUAGE_CODE = 'pt-br'
 
