@@ -15,6 +15,6 @@ router.register(r"contribuicoes", ContribuicoesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', loginViewSet.as_view(), name='login'),
+    path('login', loginViewSet.as_view(), name='login'),
     path("", include(router.urls)),
 ]

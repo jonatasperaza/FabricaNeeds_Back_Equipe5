@@ -1,11 +1,13 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv() 
 
 SECRET_KEY='django-insecure-*v-phx*4a3z1$zb63stqr!*9!s@7sodevwirup7*nqtpb$g96t'
-DEBUG=True
-ALLOWED_HOSTS=['*']
+DEBUG= os.getenv("DEBUG", False)
+ALLOWED_HOSTS=['*'] 
 
-MODE='DEVELOPMENT' # DEVELOPMENT, PRODUCTION, MIGRATE
+MODE = os.getenv("MODE")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

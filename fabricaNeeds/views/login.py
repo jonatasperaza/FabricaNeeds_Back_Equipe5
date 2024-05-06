@@ -16,10 +16,11 @@ class loginViewSet(APIView):
                 contribuinte = Contribuinte.objects.get(nome=nome)
             except Contribuinte.DoesNotExist:
                 return JsonResponse({'error': 'User not found'}, status=status.HTTP_401_UNAUTHORIZED)
+            
+            senha2 = contribuinte.senha
+            print(senha2)
+            if senha2 == senha:
 
-            # Verificar a senha
-            if contribuinte.senha == senha:
-                
                 return JsonResponse({'message': 'Login successful'}, status=status.HTTP_200_OK)
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)

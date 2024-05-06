@@ -4,7 +4,7 @@ class Contribuinte(models.Model):
     nome = models.CharField(max_length=100, null=False, unique=True)
     cpf = models.CharField(max_length=11, null=False, unique=True)
     email = models.EmailField(null=False)
-    senha = models.CharField(max_length=100, null=False)
+    senha = models.CharField(max_length=100, null=False, default="1234") 
 
     def __str__(self):
         return self.nome
