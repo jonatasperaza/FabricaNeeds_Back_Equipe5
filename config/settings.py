@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "fabricaNeeds",
+    "drf_spectacular",
     
 ]
 
@@ -38,12 +39,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-#REST_FRAMEWORK = {
-#    "DEFAULT_PERMISSION_CLASSES": [
-#        "rest_framework.permissions.IsAuthenticated",
-#        "rest_framework.permissions.DjangoModelPermissions",
-#    ],
-#}
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 
 TEMPLATES = [
     {
@@ -119,3 +117,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "FabricaNeeds API",
+    "DESCRIPTION": "API para gerenciamento de estoque e demandas da Fabrica de Software",
+    "VERSION": "1.0.0",
+}
