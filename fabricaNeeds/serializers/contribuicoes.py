@@ -1,12 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from fabricaNeeds.models import Contribuicoes, Contribuinte
-
-class ContribuicoesSerializer(ModelSerializer):
-    class Meta:
-        model = Contribuicoes
-        fields = "__all__"
-
+from fabricaNeeds.models import  Contribuinte
 class ContribuinteSerializer(ModelSerializer):
     class Meta:
         model = Contribuinte

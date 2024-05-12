@@ -19,18 +19,3 @@ class Contribuinte(models.Model):
     class Meta:
         verbose_name = "Contribuinte"
         verbose_name_plural = "Contribuintes"
-
-
-
-class Contribuicoes(models.Model):
-    contribuinte = models.ForeignKey(Contribuinte, on_delete=models.CASCADE)
-    contribuicao = models.IntegerField()
-    data = models.DateField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.contribuinte.nome} - {self.data}"
-
-    
-    class Meta:
-        verbose_name = "Contribuição"
-        verbose_name_plural = "Contribuições"

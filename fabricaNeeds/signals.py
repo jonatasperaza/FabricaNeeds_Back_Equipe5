@@ -1,24 +1,12 @@
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
-from .models import Contribuicoes, Total, Retiradas, Estoque, RetirarEstoque, EntradasEstoque, Demandas
+from .models import Total, Retiradas, Estoque, RetirarEstoque, EntradasEstoque, Demandas
 
 import sqlite3
 
 conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
-
-@receiver(post_save, sender=Contribuicoes)
-@receiver(post_delete, sender=Contribuicoes)
-def atualizar_total_contribuicoes(sender, instance, **kwargs):
-    total_obj, created = Total.objects.get_or_create(pk=1)  
-    
-    if kwargs.get('created', True):
-        total_obj.total += instance.contribuicao
-    else:  # Se a instância foi excluída
-        total_obj.total -= instance.contribuicao
-    
-    total_obj.save()
 
 @receiver(post_save, sender=Retiradas)
 @receiver(post_delete, sender=Retiradas)
